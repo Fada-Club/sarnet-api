@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: aarchid-api
+    image: dfordp/sarnet-api/service-api
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=testpass123
+      - POSTGRES_DB=mydb
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
