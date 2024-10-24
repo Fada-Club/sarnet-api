@@ -19,3 +19,15 @@ services:
       - 5432:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    depends_on:
+      - web
+  redis:
+    container_name: redis-stack-server
+    image: redis/redis-stack-server:latest
+    ports:
+      - "6379:6379"
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
