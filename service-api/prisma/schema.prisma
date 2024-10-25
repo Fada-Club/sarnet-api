@@ -13,4 +13,31 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Subscriber{
+  id     String   @id @default(uuid())
+  email   String      @unique
+  organization    String
+  domain   String
+  password String
+  salt     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  
+  subscriptions Subscription[]
+}
 
+
+enum Status {
+  Pending
+  Paid
+  Failed
+}
+
+model Subscription{
+  id     String   @id @default(uuid())
+  subscriber_id String
+  subscriber     Subscriber    @relation(fields: [subscriber_id], references: [id])
+  dataset_name String @unique
+  status Status
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  
+}

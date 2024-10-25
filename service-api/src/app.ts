@@ -24,7 +24,6 @@ app.get("/", (req, res) => {
 
 export const startServer = async () => {
     try {
-        // if(process.env.MONGODB_URL) await connectDB(process.env.MONGODB_URL);
         app.listen(8080, () => console.log("Aarchid Api started on http://localhost:8080"));
     } catch (error) {
         console.log(error);
