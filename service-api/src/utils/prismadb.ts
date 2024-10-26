@@ -6,7 +6,7 @@ declare global {
 }
 
 
-const client = globalThis.prisma || new PrismaClient
-if (process.env.NODE_ENV !== "production") globalThis.prisma = client
+const prismac = globalThis.prisma || new PrismaClient
+if (process.env.NODE_ENV !== "production") globalThis.prisma = prismac
 
-export default client
+export default prismac

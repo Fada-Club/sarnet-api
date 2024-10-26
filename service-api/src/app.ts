@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import subscriberRouter from "./routers/subscriber.router";
 
 const app = express();
 app.use(cors({
@@ -20,7 +21,7 @@ app.use(express.urlencoded({extended: true}));
 app.get("/", (req, res) => {
     res.send({message: "Hello From Aarchid API"});
 });
-
+app.use('/api/user', subscriberRouter);
 
 export const startServer = async () => {
     try {
