@@ -1,6 +1,8 @@
 import express from "express"
 
 import {isOwner} from "../middleware/index.js"
+import { getAllSubscribers } from "../controllers/subscriber.controller.js";
+import { createNewSubscription, deleteSubscription, getSubscription, getSubscriptionsBySubscriberId, updateSubscription } from "../controllers/subscription.controller.js";
 
 
 const router = express.Router();
@@ -12,7 +14,7 @@ router.route('/getSubscription/:id').get(getSubscription);
 //@ts-ignore
 router.route('/getSubscriptionsBySubscriberId/:id').get(isOwner, getSubscriptionsBySubscriberId);
 //@ts-ignore
-router.route('/createNewSubscription').post(createNewPlant);
+router.route('/createNewSubscription').post(createNewSubscription);
 //@ts-ignore
 router.route('/deleteSubscription/:id').delete(isOwner, deleteSubscription);
 //@ts-ignore

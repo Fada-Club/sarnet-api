@@ -1,7 +1,5 @@
 import express from "express";
 import cors from "cors";
-import subscriberRouter from "./routers/subscriber.router";
-import subscriptionRouter from "./routers/subscription.router";
 
 const app = express();
 app.use(cors({
@@ -20,14 +18,14 @@ app.use(express.static("public"))
 app.use(express.urlencoded({extended: true}));
 
 app.get("/", (req, res) => {
-    res.send({message: "Hello From Sarnet Service API"});
+    res.send({message: "Hello From Sarnet Dataset API"});
 });
-app.use('/api/subscriber', subscriberRouter);
-app.use('/api/subscription', subscriptionRouter);
+
+
 export const startServer = async () => {
-    try {
-        app.listen(8081, () => console.log("Aarchid Api started on http://localhost:8081"));
-    } catch (error) {
-        console.log(error);
-    }
+  try {
+      app.listen(8082, () => console.log("Aarchid Api started on http://localhost:8082"));
+  } catch (error) {
+      console.log(error);
+  }
 }
