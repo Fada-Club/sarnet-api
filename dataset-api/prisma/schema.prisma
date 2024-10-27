@@ -12,3 +12,32 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+
+model AsteroidMining {
+  id                String   @id @default(uuid())
+  name              String
+  location          String
+  coordinates       Coordinates[]
+  discoveredAt      DateTime @default(now())
+  lastSurveyedAt    DateTime @updatedAt
+  mineralComposition String
+  estimatedValue    Float
+  potentialMiningStatus   MiningStatus
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Coordinates {
+  id        String  @id @default(uuid())
+  latitude  Float
+  longitude Float
+  asteroid  AsteroidMining @relation(fields: [asteroidId], references: [id])
+  asteroidId String
+}
+
+enum MiningStatus {
+  PLANNED
+  PROCESSING
+  ABANDONED
+}
