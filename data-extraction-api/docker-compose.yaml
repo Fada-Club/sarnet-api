@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  web:
+    container_name: aarchid-api
+    image: dfordp/sarnet-api/service-api
+    env_file:
+      - .env
+    ports:
+      - "8083:8083"
+

@@ -1,0 +1,17 @@
+{
+  "name": "data-extraction-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "prisma generate",
+    "prestart": "npm run build",
+    "start": "nodemon  -r dotenv/config dist/index.js",
+    "dev": "nodemon --exec tsx -r dotenv/config src/index.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [],
+  "author": "Dilpreet",
+  "license": "ISC"
+}
